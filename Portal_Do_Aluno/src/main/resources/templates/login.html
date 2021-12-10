@@ -1,0 +1,24 @@
+ <!DOCTYPE html>
+<html xmlns:th="www.thymelaef.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./css/login.css">
+<title>login de aluno</title>
+<link rel="stylesheet" href="/css/msg.css">
+</head>
+<body>
+<form action="/loginAluno" method="get">
+        <h3>Login</h3>
+        <input type="text" name="email" placeholder="Seu e-mail">
+        <input type="password" name="senha" placeholder="Sua senha">
+        <input type="submit" name="acao" value="Entrar" >
+        
+              <p>Ou clique no link abaixo caso não tenha cadastro  <br>
+                  <a href="/cad">Cadastrar novo aluno</a></p>
+                  <br>
+                  <p><a href="/PortalDoAluno">Voltar</a></p>        
+    </form>
+<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+</body>
+</html>

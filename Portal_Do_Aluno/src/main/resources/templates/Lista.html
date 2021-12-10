@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymelaef.org" >
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/lista.css">
+<link rel="stylesheet" href="/css/msg.css">
+   
+<title>Lista</title>
+</head>
+<body>
+<nav>
+		<div class="logo">
+			<h1>Dados cadastrais</h1>
+		</div>
+		
+		<ul> 
+			<li><a href="/aluno/minhasNotas" title="Boletim"><img src="/icons/books.png" alt=""></a></li>
+			<li><a href="/aluno/meusHorarios" title="Horários"><img src="/icons/clock.png" alt=""></a></li>
+			<li> <a href="/aluno/listaAluno" title="Alteração de dados cadastrais"><img src="/icons/edit.png" alt=""></a></li>
+			<li><a href="/aluno/minhaFrequencia" title="Frequência"><img src="/icons/calendar.png" alt=""></a></li>
+			<li ><a href="/aluno/materiais" title="Links para materiais de apoio"><img src="/icons/links.png" alt=""></a></li>
+			<li><a href="/aluno/historico" title="Gerar histórico escolar"><img src="/icons/pdf.png" alt="Gerar histórico"></a></li>
+			<li><a href="/aluno/contatosProfessores" title="Contatos dos docentes"><img src="/icons/email.png" alt=""></a></li>
+			<li><a href="/aluno/home" title="Voltar para home"><img src="/icons/sair.png" alt="Voltar para home"></a></li>
+		</ul>
+	</nav>
+
+
+   <h3>Alteração de dados cadastrais</h3>
+<table>
+	<tr> 
+	<th>Nome</th>
+	<th>Matricula</th>
+	<th>Sexo</th>	
+	<th>CPF</th>
+	<th>RG</th>
+	<th>Curso</th>
+	<th>Nome mae/pai</th>
+	<th>Telefone</th>
+	<th>Email</th>
+	<th>Senha</th>
+	
+	</tr>   
+		<tr th:each="aluno : ${lista}" th:if="${aluno.id} == ${session.alunoLogado.id}">
+				<td th:text="${aluno.nome}">s</td>
+				<td th:text="${aluno.matricula}"></td>
+				<td th:text="${aluno.sexo}"></td>
+				<td th:text="${aluno.cpf}"></td>
+				<td th:text="${aluno.rg}"></td>
+				<td th:text="${aluno.curso.nome}"></td>
+				<td th:text="${aluno.nomePais}"></td>
+				<td th:text="${aluno.telefone}"></td>
+				<td th:text="${aluno.email}"></td>
+				<td th:text="${aluno.senha}"></td>
+				
+				<td>
+				<a th:href="|/cad?id=${aluno.id}|">Editar</a
+				>
+				
+		</td>
+		
+	</tr>
+	</table>
+	<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+	
+	
+
+</body>
+</html>

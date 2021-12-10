@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html  xmlns:th="www.thymelaef.org" >
+<head>
+<meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/Home.css">
+ <link rel="stylesheet" href="/css/msg.css">
+
+<title>Home do Aluno</title>
+</head>
+<body>
+<nav>
+    <h1>Menu do aluno</h1>
+    <br>
+   <h4>Olá <span  th:text = ' ${session.alunoLogado.nome} ' ></span> !</h4>
+  
+<main class="cards">
+   <section class="card">
+       <div class="icon">
+        <img src="/icons/books.png" alt="Boletim">
+       </div>
+      <h3>Boletim</h3>
+      <button><a href="/aluno/minhasNotas">Acessar</a></button>
+   </section>
+
+   <section class="card">
+       <div class="icon">
+        <img src="/icons/clock.png" alt="Horários">
+       </div>
+      <h3>Horários</h3>
+      <button><a href="/aluno/meusHorarios">Acessar</a></button>
+   </section>
+
+   <section class="card">
+       <div class="icon">
+        <img src="/icons/calendar.png" alt="Frequencia">
+       </div>
+      
+        <h3>Frequência</h3>
+        <button><a href="/aluno/minhaFrequencia">Acessar</a></button>
+   </section>
+
+   <section class="card">
+       <div class="icon">
+        <img src="/icons/edit.png" alt="Alteração de dados">
+       </div>
+          
+           <h3>Alteração de dados cadastrais</h3>
+           <button><a href="/aluno/listaAluno">Editar</a></button>
+   </section>
+
+   <section class="card">
+       <div class="icon">
+        <img src="/icons/pdf.png" alt="Gerar histórico escolar">
+       </div>
+         
+          <h3>Gerar histórico escolar</h3>
+          <button ><a href="/aluno/historico">Gerar</a></button>
+   </section>
+
+   <section class="card">
+    <div class="icon">
+     <img src="/icons/links.png" alt="material de apoio">
+    </div>
+      
+       <h3>Material de apoio</h3>
+       <button ><a href="/aluno/materiais">Acessar</a></button>
+</section>
+
+<section class="card">
+    <div class="icon">
+     <img src="/icons/email.png" alt="Contato dos docentes">
+    </div>
+      
+       <h3>Contatos dos docentes</h3>
+       <button ><a href="/aluno/contatosProfessores">Acessar</a></button>
+</section>
+
+<section class="card">
+    <div class="icon">
+     <img src="/icons/sair.png" alt="Sair">
+    </div>
+      
+       <h3>Deixar a página</h3>
+       <button ><a href="/sair">Sair</a></button>
+</section>
+
+</main>
+<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+</body>
+</html>

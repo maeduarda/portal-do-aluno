@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xnlns:th="www.thymelaef.org">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="/css/msg.css">
+<title>Lista dos Cursos</title>
+<link rel="stylesheet" href="/css/lista.css">
+</head>
+<body>
+
+<nav>
+		<div class="logo">
+			<h1>Matérias</h1>
+		</div>
+		
+		<ul> 
+			
+           <li><a href="/admin/cadCurso" title="Cadastrar cursos"><img src="../icons/notebook.png" alt=""></a></li>
+           <li> <a href="/admin/cadP" title="Cadastrar Professores"><img src="../icons/teacher.png" alt=""></a></li>
+           <li><a href="/admin/cadMateria" title="Cadastrar matérias"><img src="../icons/books.png" alt=""></a></li>
+           <li><a href="/admin/cadInstituicao" title="Cadastrar e ou editar Contatos das Instituição"><img src="../icons/email.png" alt=""></a></li>
+			<li><a href="/admin/home" title="Voltar para home"><img src="../icons/sair.png" alt="Voltar para home"></a></li>
+		</ul>
+	</nav>
+	<br>
+	
+  <h3>Cursos</h3>
+	<table>
+	<tr>
+	<th>Nome</th>
+	<th>Duração</th>
+	</tr>
+		<tr th:each="curso : ${lista}">
+				<td th:text="${curso.nome}"></td>
+				<td th:text="${curso.duracao}"></td>
+					<td>
+						<a th:href="|/admin/cadCurso?id=${curso.id}|">Editar</a>
+					</td>
+				
+				<td><a th:href="|/admin/excluirCurso?id=${curso.id}|">Excluir</a>
+		</td>
+	</tr>
+	</table>
+	<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+
+</body>
+</html>
+</html>

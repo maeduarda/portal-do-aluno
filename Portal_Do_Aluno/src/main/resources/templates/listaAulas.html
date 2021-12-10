@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xnlns:th="www.thymelaef.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="/css/listaAulas.css">
+<link rel="stylesheet" href="/css/msg.css">
+<title>Lista de conteudos de aula</title>
+</head>
+<body>
+<nav>
+		<div class="logo">
+			<h1>Conteúdos de aula</h1>
+		</div>
+		
+		<ul> 
+			<li><a href="/listaMateria" title="Disciplinas"><img src="../icons/books.png" alt="Boletim"></a></li>
+            <li><a href="/listaProfessor" title="Alteração de dados cadastrais"><img src="../icons/edit.png" alt="Boletim"></a></li>
+            <li> <a href="/professor/cadAvaliacao" title="Lançar notas dos alunos"><img src="../icons/notebook.png" alt=""></a></li>
+           <li><a href="/professor/cadFrequencia" title="Frequência"><img src="../icons/calendar.png" alt=""></a></li>
+           <li ><a href="/professor/cadAulas" title="Links para materiais de apoio"><img src="../icons/links.png" alt=""></a></li>
+           <li><a href="/listaInstituicao" title="Contatos da Instituição"><img src="../icons/email.png" alt=""></a></li>
+			<li><a href="/professor/home" title="Voltar para home"><img src="../icons/sair.png" alt="Voltar para home"></a></li>
+		</ul>
+	</nav>
+<br>
+
+
+<form action="/professor/filtrarAulas" method="post">
+
+	<h4>Data:</h4><input type = "date" name = "data">
+	
+   <h4>Matéria:</h4> <select name="materia" >
+			<option value = ""></option>
+			<option th:each = "cat : ${materias}" 
+			th:value = "${cat.id}"
+			th:text = "${cat.nome}"
+			th:if="${cat.professores.id} == ${session.professorLogado.id}"
+			> </select><br>
+		<input type ="submit" value="Filtrar">
+</form>
+	
+<h3>Conteúdos de aula</h3>
+	<table>
+	<tr>
+	<th>Link para o material</th>
+	<th>Data</th>
+	<th>Matéria</th>
+	<th>Professor</th>
+	<th></th>
+	</tr>
+		<tr th:each="a : ${lista}" th:if="${a.professores.id} == ${session.professorLogado.id}">
+				<td><a th:href = "${a.material}" target="_blank"><h6>Link</h6></a></td>
+				<td th:text= "${#temporals.format(a.data, 'dd-MM-yyyy')}"></td>
+				<td th:text="${a.materias.nome}"></td>
+				<td th:text="${a.professores.nome}"></td>	
+				<td><h5><a  th:href="|/professor/cadAulas?id=${a.id}|">Editar</a></h5>
+
+					</td>	
+				<td><h5><a th:href="|/professor/excluirAulas?id=${a.id}|">Excluir</a></h5></td>
+	</tr>
+	
+	</table>
+	<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+
+	
+</body>
+</html>

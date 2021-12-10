@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xnlns:th="www.thymelaef.org">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="/css/msg.css">
+<title>Lista dos Contatos</title>
+<link rel="stylesheet" href="/css/lista.css">
+</head>
+<body>
+	<nav>
+		<div class="logo">
+			<h1>Contatos da Instituição</h1>
+		</div>
+		
+		<ul> 
+			<li><a href="/listaMateria" title="Disciplinas"><img src="../icons/books.png" alt="Boletim"></a></li>
+            <li><a href="/listaProfessor" title="Alteração de dados cadastrais"><img src="../icons/edit.png" alt="Boletim"></a></li>
+            <li> <a href="/professor/cadAvaliacao" title="Lançar notas dos alunos"><img src="../icons/notebook.png" alt=""></a></li>
+           <li><a href="/professor/cadFrequencia" title="Frequência"><img src="../icons/calendar.png" alt=""></a></li>
+           <li ><a href="/professor/cadAulas" title="Links para materiais de apoio"><img src="../icons/links.png" alt=""></a></li>
+           <li><a href="/listaInstituicao" title="Contatos da Instituição"><img src="../icons/email.png" alt=""></a></li>
+			<li><a href="/professor/home" title="Voltar para home"><img src="./icons/sair.png" alt="Voltar para home"></a></li>
+		</ul>
+
+
+</nav>
+   <h3>Contatos</h3>
+	
+	<table>
+	<tr>
+	<th>Telefone</th>
+	<th>Endereço</th>
+	<th>Site</th>
+	</tr>
+		<tr th:each="insti : ${lista}">
+				<td th:text="${insti.numero}"></td>
+				<td th:text="${insti.endereco}"></td>
+				<td><a th:href = "${insti.site}" target="_blank">site</a></td>
+	</tr>
+	</table>
+	<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+</body>
+</html>

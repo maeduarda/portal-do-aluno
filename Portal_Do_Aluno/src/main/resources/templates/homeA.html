@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymelaef.org">
+<head>
+<meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/HomeAdm.css">
+<link rel="stylesheet" href="/css/msg.css">
+
+<title>Home Do Administrador</title>
+</head>
+<body>
+<nav>
+       <h2>Menu do Administrador</h2>
+    <main class="cards">
+       <section class="card">
+           <div class="icon">
+            <img src="/icons/notebook.png" alt="Cadastrar cursos">
+           </div>
+          <h3>Cadastrar cursos</h3>
+          <button><a href="/admin/cadCurso">Cadastrar</a></button>
+       </section>
+
+       <section class="card">
+           <div class="icon">
+            <img src="/icons/teacher.png" alt="Cadastrar Professores">
+           </div>
+          
+            <h3>Cadastrar Professores</h3>
+            <button><a href="/admin/cadP">Cadastrar</a></button>
+       </section>
+
+       <section class="card">
+           <div class="icon">
+            <img src="/icons/books.png" alt="Cadastrar matérias">
+           </div>
+              
+               <h3>Cadastrar matérias</h3>
+               <button><a href="/admin/cadMateria">Cadastrar </a></button>
+       </section>
+
+       <section class="card">
+           <div class="icon">
+            <img src="/icons/email.png" alt="Cadastrar ou editar Contatos da Instituição">
+           </div>
+             
+              <h3>Cadastrar ou editar Contatos da Instituição</h3>
+              <button><a href="/admin/listaInstituicao">Cadastrar</a></button>
+       </section>
+
+       <section class="card">
+        <div class="icon">
+         <img src="/icons/sair.png" alt="Sair">
+        </div>
+          
+           <h3>Deixar a página</h3>
+           <button><a href="/sair" class="link">Sair</a></button>
+    </section>
+      
+    </main>
+<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+</body>

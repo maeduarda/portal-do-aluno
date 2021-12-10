@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/lista.css">
+<link rel="stylesheet" href="/css/msg.css">
+<title>Lista dos Professores</title>
+</head>
+<body>
+	<nav>
+		<div class="logo">
+			<h1>Matérias</h1>
+		</div>
+		
+		<ul> 
+			<li><a href="/admin/listaMateria" title="Disciplinas e Horários"><img src="../icons/clockandbooks.png" alt=""></a></li>
+           <li><a href="/admin/cadCurso" title="Cadastrar cursos"><img src="../icons/notebook.png" alt=""></a></li>
+           <li> <a href="/admin/cadP" title="Cadastrar Professores"><img src="../icons/teacher.png" alt=""></a></li>
+           <li><a href="/admin/cadMateria" title="Cadastrar matérias"><img src="../icons/books.png" alt=""></a></li>
+           <li><a href="/admin/cadInstituicao" title="Cadastrar e ou editar Contatos das Instituição"><img src="../icons/email.png" alt=""></a></li>
+			<li><a href="/admin/home" title="Voltar para home"><img src="./icons/sair.png" alt="Voltar para home"></a></li>
+		</ul>
+	</nav>
+	<br>
+
+<p><a href="/admin/home" >Voltar para a Home</a></p>
+<h3>Professores</h3>
+	<table>
+	<tr> 
+	<th>Nome</th>
+	<th>Senha</th>	
+	<th>Email</th>
+	<th>CPF</th>
+	<th>RG</th>
+	<th>Telefone</th>	
+	
+	
+	<th>Endereço</th>	
+	</tr>
+		<tr th:each="prof : ${lista}">
+				<td th:text="${prof.nome}"></td>
+				<td th:text="${prof.senha}"></td>
+				<td th:text="${prof.email}"></td>
+				<td th:text="${prof.cpf}"></td>
+				<td th:text="${prof.rg}"></td>
+				<td th:text="${prof.telefone}"></td>
+				<td th:text="${prof.endereco}"></td>
+				<td>
+				<a th:href="|/admin/cadP?id=${prof.id}|">Editar</a
+				>
+				<a th:href="|/admin/excluirProfessor?id=${prof.id}|" >Excluir</a>
+		</td>
+	</tr>
+	</table>
+	<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+	
+</body>
+</html>

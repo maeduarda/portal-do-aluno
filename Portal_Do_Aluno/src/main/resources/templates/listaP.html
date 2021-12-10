@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="/css/lista.css">
+<link rel="stylesheet" href="/css/msg.css">
+<title>Lista dos Professores</title>
+</head>
+<body>
+<nav>
+		<div class="logo">
+			<h1>Alteração de dados cadastrais</h1>
+		</div>
+		
+		<ul> 
+			<li><a href="/listaMateria" title="Disciplinas"><img src="../icons/books.png" alt="Boletim"></a></li>
+            <li><a href="/listaProfessor" title="Alteração de dados cadastrais"><img src="../icons/edit.png" alt="Boletim"></a></li>
+            <li> <a href="/professor/cadAvaliacao" title="Lançar notas dos alunos"><img src="../icons/notebook.png" alt=""></a></li>
+           <li><a href="/professor/cadFrequencia" title="Frequência"><img src="../icons/calendar.png" alt=""></a></li>
+           <li ><a href="/professor/cadAulas" title="Links para materiais de apoio"><img src="../icons/links.png" alt=""></a></li>
+           <li><a href="/listaInstituicao" title="Contatos da Instituição"><img src="../icons/email.png" alt=""></a></li>
+			<li><a href="/professor/home" title="Voltar para home"><img src="./icons/sair.png" alt="Voltar para home"></a></li>
+		</ul>
+	</nav>
+
+
+	<br>
+
+	
+</form>
+	<table>
+	<tr> 
+	<th>Nome</th>
+	<th>Senha</th>
+	<th>Email</th>
+	<th>CPF</th>
+	<th>RG</th>
+	<th>Telefone</th>
+	
+	
+	<th>Endereço</th>	
+	</tr>
+		<tr th:each="prof : ${lista}" th:if = "${prof.id} == ${session.professorLogado.id} ">
+				<td th:text="${prof.nome}"></td>
+				<td th:text="${prof.senha}"></td>
+				<td th:text="${prof.email}"></td>
+				<td th:text="${prof.cpf}"></td>
+				<td th:text="${prof.rg}"></td>
+				<td th:text="${prof.telefone}"></td>
+				<td th:text="${prof.endereco}"></td>
+				<td>
+				<a th:href="|/cadP?id=${prof.id}|"><h5>Editar</h5></a
+				>
+			
+		</td>
+		
+	</tr>
+	</table>
+	<div id= "hideMe" th:text = '${menssagemE}' th:unless="${menssagemE} == null" ></div> 
+	<div id= "hideMe2" th:text = '${menssagemS}' th:unless="${menssagemS} == null"  ></div> 
+
+</body>
+</html>
